@@ -1,18 +1,10 @@
-export default async function handler(req, res) {
-  const { HELIUS_API_KEY } = process.env;
-  const TOKEN_ADDRESS = "4XKyPd6Z8mts5BTYMJ4xM53z6ZBJUzNpAqUw1JZi1Tkz";
 
-  try {
-    const holdersResponse = await fetch(`https://rpc.helius.xyz/?api-key=${HELIUS_API_KEY}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        jsonrpc: "2.0",
-        id: "getTokenLargestAccounts",
-        method: "getTokenLargestAccounts",
-        params: [TOKEN_ADDRESS],
-      }),
-    });
+import fetchHolders from "@/lib/fetchHolders";
+
+export default async function handler(req, res) {
+  const data = await fetchHolders();
+  res.status(200).json(data);
+}
 
     const holdersData = await holdersResponse.json();
 
