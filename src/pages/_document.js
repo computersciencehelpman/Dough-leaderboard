@@ -1,10 +1,11 @@
+// src/pages/_document.js
 import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
   return (
-    <Html lang="en">
+    <Html> {/* DO NOT set class="dark" here when it's toggled in _app.js */}
       <Head />
-      <body className="antialiased">
+      <body>
         <Main />
         <NextScript />
       </body>

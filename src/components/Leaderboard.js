@@ -1,31 +1,60 @@
-export default function Leaderboard({ holders }) {
-  return (
-    <div className="max-w-5xl mx-auto mt-12 px-4">
-      <h1 className="text-3xl font-bold mb-6 text-center text-white">Top Holders</h1>
+// components/Leaderboard.js
+import React from "react";
 
-      <div className="overflow-x-auto">
-        <table className="min-w-full bg-gray-900 text-white rounded-lg shadow">
-          <thead className="bg-gray-800 text-sm uppercase text-gray-400">
-            <tr>
-              <th className="px-4 py-3 text-left">Rank</th>
-              <th className="px-4 py-3 text-left">Wallet</th>
-              <th className="px-4 py-3 text-right">Amount Held</th>
-              <th className="px-4 py-3 text-right">% of Supply</th>
-              <th className="px-4 py-3 text-right">Value (USD)</th>
+export default function Leaderboard({ holders = [], totalSupply, tokenPrice }) {
+  return (
+    <div className="bg-white text-black dark:bg-[#0d0d0d] dark:text-white min-h-screen px-4 sm:px-8 py-8">
+      <h1 className="text-2xl font-bold mb-6">Top Holders (Simple View)</h1>
+
+      <table className="w-full border-separate border-spacing-y-2 text-sm sm:text-base">
+        <thead>
+          <tr className="text-left text-gray-600 dark:text-gray-300 uppercase text-xs border-b border-gray-700">
+            <th className="pb-2">Rank</th>
+            <th className="pb-2">Wallet</th>
+            <th className="pb-2">Amount</th>
+            <th className="pb-2">% of Supply</th>
+            <th className="pb-2">Value (USD)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {holders.map((holder, index) => (
+            <tr
+              key={index}
+              className="bg-gray-100 dark:bg-zinc-900 hover:bg-gray-200 dark:hover:bg-zinc-800 rounded"
+            >
+              <td className="py-2 px-3 font-semibold text-white">{holder.rank}</td>
+
+              <td className="py-2 px-3">
+                <a
+                  href={`https://solscan.io/account/${holder.address}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline text-blue-400 hover:text-blue-200"
+                >
+                  {holder.shortAddress || holder.address}
+                </a>
+              </td>
+
+              <td className="py-2 px-3 text-white w-[200px]">
+                <div className="relative w-full bg-gray-800 h-5 rounded overflow-hidden">
+                  <div
+                    className="bg-blue-500 h-full"
+                    style={{ width: `${parseFloat(holder.percentage) || 0}%` }}
+                  />
+                </div>
+                <div className="text-sm mt-1">{holder.amount}</div>
+              </td>
+
+              <td className="py-2 px-3">{holder.percentage}</td>
+              <td className="py-2 px-3 text-white">{holder.valueUSD}</td>
             </tr>
-          </thead>
-          <tbody className="divide-y divide-gray-700">
-            {holders.map(holder => (
-              <tr key={holder.address} className="hover:bg-gray-800">
-                <td className="px-4 py-3">{holder.rank}</td>
-                <td className="px-4 py-3">{holder.shortAddress}</td>
-                <td className="px-4 py-3 text-right">{holder.amount}</td>
-                <td className="px-4 py-3 text-right">{holder.percentage}</td>
-                <td className="px-4 py-3 text-right">${holder.valueUSD}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+          ))}
+        </tbody>
+      </table>
+
+      <div className="mt-6 text-sm text-gray-500 dark:text-gray-400">
+        <p>Total Supply: {totalSupply}</p>
+        <p>Token Price (USD): ${tokenPrice}</p>
       </div>
     </div>
   );

@@ -1,6 +1,9 @@
-
+// src/pages/simple.js
 import Leaderboard from "@/components/Leaderboard";
-import fetchHolders from "@/lib/fetchHolders"; 
+import fetchHolders from "@/lib/fetchHolders"; // make sure this exists
+import DarkModeToggle from "@/components/DarkModeToggle";
+
+
 export async function getStaticProps() {
   const data = await fetchHolders();
 
@@ -10,14 +13,14 @@ export async function getStaticProps() {
       totalSupply: data.totalSupply || 0,
       tokenPrice: data.tokenPrice || 0,
     },
-    revalidate: 86400, 
+    revalidate: 86400, // 24 hours
   };
 }
 
 export default function SimplePage({ holders, totalSupply, tokenPrice }) {
   return (
-    <div style={{ padding: "2rem", fontFamily: "Arial, sans-serif" }}>
-      <h1>Top Holders (Simple View)</h1>
+    <div>
+      <DarkModeToggle />
       <Leaderboard
         holders={holders}
         totalSupply={totalSupply}
@@ -26,3 +29,5 @@ export default function SimplePage({ holders, totalSupply, tokenPrice }) {
     </div>
   );
 }
+
+
