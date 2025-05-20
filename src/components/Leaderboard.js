@@ -1,9 +1,8 @@
-// components/Leaderboard.js
 import React from "react";
 
 export default function Leaderboard({ holders = [], totalSupply, tokenPrice }) {
   return (
-    <div className="bg-white text-black dark:bg-[#0d0d0d] dark:text-white min-h-screen px-4 sm:px-8 py-8">
+    <div className="bg-white text-black dark:bg-[#0d0d0d] dark:text-white px-4 sm:px-8 py-8 pb-32">
       <h1 className="text-2xl font-bold mb-6">Top Holders (Simple View)</h1>
 
       <table className="w-full border-separate border-spacing-y-2 text-sm sm:text-base">
@@ -23,7 +22,6 @@ export default function Leaderboard({ holders = [], totalSupply, tokenPrice }) {
               className="bg-gray-100 dark:bg-zinc-900 hover:bg-gray-200 dark:hover:bg-zinc-800 rounded"
             >
               <td className="py-2 px-3 font-semibold text-white">{holder.rank}</td>
-
               <td className="py-2 px-3">
                 <a
                   href={`https://solscan.io/account/${holder.address}`}
@@ -34,7 +32,6 @@ export default function Leaderboard({ holders = [], totalSupply, tokenPrice }) {
                   {holder.shortAddress || holder.address}
                 </a>
               </td>
-
               <td className="py-2 px-3 text-white w-[200px]">
                 <div className="relative w-full bg-gray-800 h-5 rounded overflow-hidden">
                   <div
@@ -44,7 +41,6 @@ export default function Leaderboard({ holders = [], totalSupply, tokenPrice }) {
                 </div>
                 <div className="text-sm mt-1">{holder.amount}</div>
               </td>
-
               <td className="py-2 px-3">{holder.percentage}</td>
               <td className="py-2 px-3 text-white">{holder.valueUSD}</td>
             </tr>
