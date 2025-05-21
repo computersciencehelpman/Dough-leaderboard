@@ -1,7 +1,29 @@
+/* styles/globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bg-color: #ffffff;
+  --text-color: #171717;
+}
+
+[data-theme="dark"] {
+  --bg-color: #0a0a0a;
+  --text-color: #ededed;
+}
+
 body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
   font-family: var(--font-geist-sans, Arial, sans-serif);
+}
+
+/* ============ Custom Toggle Styles ============ */
+.slider {
+  @apply block bg-gray-300 dark:bg-gray-700 absolute inset-0 rounded-full cursor-pointer transition-colors duration-300;
+}
+
+.dot {
+  @apply absolute top-1 w-8 h-8 rounded-full transition-transform duration-300;
 }

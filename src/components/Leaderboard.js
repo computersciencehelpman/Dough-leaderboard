@@ -1,8 +1,9 @@
+// components/Leaderboard.js
 import React from "react";
 
 export default function Leaderboard({ holders = [], totalSupply, tokenPrice }) {
   return (
-    <div className="bg-white text-black dark:bg-[#0d0d0d] dark:text-white px-4 sm:px-8 py-8 pb-32">
+    <div className="bg-[var(--bg-color)] text-[var(--text-color)] px-4 sm:px-8 py-8 pb-32">
       <h1 className="text-2xl font-bold mb-6">Top Holders (Simple View)</h1>
 
       <table className="w-full border-separate border-spacing-y-2 text-sm sm:text-base">
