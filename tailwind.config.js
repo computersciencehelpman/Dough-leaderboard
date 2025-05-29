@@ -1,6 +1,6 @@
 // tailwind.config.js
 module.exports = {
-  darkMode: ['class', '[data-theme="dark"]'], // Enables class *and* attribute strategy
+  darkMode: ['class', '[data-theme="dark"]'], 
   content: [
     "./src/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",

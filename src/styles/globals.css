@@ -19,11 +19,3 @@ body {
   font-family: var(--font-geist-sans, Arial, sans-serif);
 }
 
-/* ============ Custom Toggle Styles ============ */
-.slider {
-  @apply block bg-gray-300 dark:bg-gray-700 absolute inset-0 rounded-full cursor-pointer transition-colors duration-300;
-}
-
-.dot {
-  @apply absolute top-1 w-8 h-8 rounded-full transition-transform duration-300;
-}

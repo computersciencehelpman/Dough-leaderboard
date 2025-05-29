@@ -4,8 +4,8 @@ import { useEffect } from "react";
 
 export default function App({ Component, pageProps }) {
   useEffect(() => {
-    // Force dark mode manually
-    document.documentElement.classList.add("dark");
+    // Force dark mode on initial load
+    document.documentElement.setAttribute("data-theme", "dark");
   }, []);
 
   return <Component {...pageProps} />;
